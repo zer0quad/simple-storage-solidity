@@ -12,11 +12,14 @@ contract SimpleStorage {
 
     Student[] public listOfStudentInfo;
 
+    mapping(string => uint256) public nameToMarks;
+
     function addGrade(string memory _grade) external {
         grade = _grade;
     }
 
     function addStudentInfo(string memory _name, uint256 _marks) external {
         listOfStudentInfo.push(Student(_name, _marks));
+        nameToMarks[_name] = [_marks];
     }
 }
